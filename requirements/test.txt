@@ -1,0 +1,4 @@
+-r base.txt
+
+psutil
+pywin32; platform_system=='Windows'
